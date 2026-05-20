@@ -11,6 +11,7 @@ class Tarea:
         return f"{self.nombre} - {estado}"
 
 
+
 class GestorTareas:
     def __init__(self):
         self.tareas = []
@@ -25,7 +26,9 @@ class GestorTareas:
         if 0 <= index < len(self.tareas):
             self.tareas[index].completar()
             return True
-        return False
+        else:
+            print("Índice inválido")
+            return False
 
     def eliminar_tarea(self, index):
         if 0 <= index < len(self.tareas):
@@ -35,3 +38,9 @@ class GestorTareas:
 
     def buscar_tarea(self, nombre):
         return [t for t in self.tareas if nombre.lower() in t.nombre.lower()]
+
+    def listar_tareas(self):
+        if not self.tareas:
+            print("No hay tareas")
+        for i, tarea in enumerate(self.tareas):
+         print(f"{i}: {tarea}")

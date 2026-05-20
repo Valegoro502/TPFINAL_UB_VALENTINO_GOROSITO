@@ -1,3 +1,4 @@
+from gestor import Tarea, GestorTareas
 def test_camino_valido():
     g = GestorTareas()
     g.agregar_tarea("Estudiar")

@@ -1,3 +1,5 @@
+from gestor import Tarea, GestorTareas
+
 import time
 
 def test_rendimiento_agregar_muchas_tareas():

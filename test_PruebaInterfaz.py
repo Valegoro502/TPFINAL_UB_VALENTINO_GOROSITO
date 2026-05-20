@@ -1,3 +1,4 @@
+from gestor import Tarea, GestorTareas
 def test_interfaz_listado(capsys):
     g = GestorTareas()
     g.agregar_tarea("Estudiar")

@@ -1,3 +1,5 @@
+from gestor import Tarea, GestorTareas
+
 def test_integracion_flujo_completo():
     g = GestorTareas()
     
