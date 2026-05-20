@@ -75,6 +75,7 @@ El código debe estar organizado en clases y métodos reutilizables.
 RNF04 – Compatibilidad
 
 El software debe ejecutarse en Python 3.10 o superior.
+El software de pruebas debe ejecutarse con Python 3.10 o superior y con el paquete de pytest instalado.
 
 # Diagrama UML
 
