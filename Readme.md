@@ -78,4 +78,4 @@ El software debe ejecutarse en Python 3.10 o superior.
 
 # Diagrama UML
 
-![Diagrama UML y Diagrama de casos de uso](uml.png)
+![Diagrama UML y Diagrama de casos de uso](umluso.png)
