@@ -1,0 +1,18 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.2, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\valen\AppData\Local\Programs\Python\Python313\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\valen\tpfinal
+collecting ... collected 10 items
+
+test_IntegracionPrueba.py::test_integracion_flujo_completo PASSED        [ 10%]
+test_PruebaCamino.py::test_camino_valido PASSED                          [ 20%]
+test_PruebaCamino.py::test_camino_indice_negativo PASSED                 [ 30%]
+test_PruebaCamino.py::test_camino_fuera_rango PASSED                     [ 40%]
+test_PruebaComponentes.py::test_tarea_creacion PASSED                    [ 50%]
+test_PruebaComponentes.py::test_tarea_completar PASSED                   [ 60%]
+test_PruebaComponentes.py::test_gestor_agregar PASSED                    [ 70%]
+test_PruebaDeRendimiento.py::test_rendimiento_agregar_muchas_tareas PASSED [ 80%]
+test_PruebaInterfaz.py::test_interfaz_listado PASSED                     [ 90%]
+test_PruebaInterfaz.py::test_interfaz_error_indice PASSED                [100%]
+
+============================= 10 passed in 0.09s ==============================
