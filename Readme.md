@@ -1,6 +1,3 @@
-1. Presentación del Software
-Nombre del Software
-
 Sistema de Gestión de Turnos Médicos
 
 Descripción General
