@@ -1,19 +1,20 @@
-from gestor import Tarea, GestorTareas
-def test_interfaz_listado(capsys):
-    g = GestorTareas()
-    g.agregar_tarea("Estudiar")
+from clinica import Paciente, Medico, Clinica
 
-    g.listar_tareas()
+
+def test_interfaz_mostrar_medicos(capsys):
+    c = Clinica()
+    c.agregar_medico(Medico("M001", "García", "Cardiología"))
+
+    c.mostrar_medicos()
     salida = capsys.readouterr().out
 
-    assert "Estudiar" in salida
+    assert "García" in salida
 
 
-def test_interfaz_error_indice(capsys):
-    g = GestorTareas()
+def test_interfaz_sin_turnos(capsys):
+    c = Clinica()
 
-    g.completar_tarea(5)
+    c.mostrar_turnos()
     salida = capsys.readouterr().out
 
-    assert "Índice inválido" in salida
-
+    assert "No hay turnos registrados" in salida

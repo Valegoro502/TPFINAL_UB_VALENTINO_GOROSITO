@@ -1,13 +1,14 @@
-from gestor import Tarea, GestorTareas
+from clinica import Paciente, Medico, Clinica
+
 
 def test_integracion_flujo_completo():
-    g = GestorTareas()
-    
-    g.agregar_tarea("Estudiar")
-    g.agregar_tarea("Entrenar")
+    c = Clinica()
 
-    g.completar_tarea(0)
-    g.eliminar_tarea(1)
+    c.agregar_paciente(Paciente("12345678", "Juan Pérez"))
+    c.agregar_medico(Medico("M001", "García", "Cardiología"))
 
-    assert len(g.tareas) == 1
-    assert g.tareas[0].completada is True
+    c.reservar_turno("12345678", "M001", "15/06/2026")
+    assert len(c.turnos) == 1
+
+    c.cancelar_turno("12345678", "M001")
+    assert len(c.turnos) == 0
