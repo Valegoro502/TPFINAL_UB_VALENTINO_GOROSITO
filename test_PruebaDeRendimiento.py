@@ -1,14 +1,14 @@
-from gestor import Tarea, GestorTareas
-
+from clinica import Paciente, Medico, Clinica
 import time
 
-def test_rendimiento_agregar_muchas_tareas():
-    g = GestorTareas()
+
+def test_rendimiento_registrar_muchos_pacientes():
+    c = Clinica()
 
     inicio = time.time()
 
     for i in range(1000):
-        g.agregar_tarea(f"Tarea {i}")
+        c.agregar_paciente(Paciente(str(i), f"Paciente {i}"))
 
     fin = time.time()
 

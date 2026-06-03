@@ -1,17 +1,22 @@
-from gestor import Tarea, GestorTareas
+from clinica import Paciente, Medico, Turno, Clinica
 
-def test_tarea_creacion():
-    t = Tarea("Estudiar")
-    assert t.nombre == "Estudiar"
-    assert t.completada is False
 
-def test_tarea_completar():
-    t = Tarea("Leer")
-    t.completar()
-    assert t.completada is True
+def test_paciente_creacion():
+    p = Paciente("12345678", "Juan Pérez")
+    assert p.dni == "12345678"
+    assert p.nombre == "Juan Pérez"
 
-def test_gestor_agregar():
-    g = GestorTareas()
-    resultado = g.agregar_tarea("Programar")
+
+def test_medico_creacion():
+    m = Medico("M001", "García", "Cardiología")
+    assert m.matricula == "M001"
+    assert m.nombre == "García"
+    assert m.especialidad == "Cardiología"
+
+
+def test_clinica_agregar_paciente():
+    c = Clinica()
+    p = Paciente("12345678", "Juan Pérez")
+    resultado = c.agregar_paciente(p)
     assert resultado is True
-    assert len(g.tareas) == 1
+    assert len(c.pacientes) == 1

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python3 clinica.py
+python3 main.py

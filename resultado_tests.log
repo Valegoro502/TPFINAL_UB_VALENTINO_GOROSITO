@@ -1,18 +1,27 @@
-============================= test session starts =============================
+﻿============================= test session starts =============================
 platform win32 -- Python 3.13.2, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\valen\AppData\Local\Programs\Python\Python313\python.exe
 cachedir: .pytest_cache
 rootdir: C:\Users\valen\tpfinal
-collecting ... collected 10 items
+collecting ... collected 19 items
 
-test_IntegracionPrueba.py::test_integracion_flujo_completo PASSED        [ 10%]
-test_PruebaCamino.py::test_camino_valido PASSED                          [ 20%]
-test_PruebaCamino.py::test_camino_indice_negativo PASSED                 [ 30%]
-test_PruebaCamino.py::test_camino_fuera_rango PASSED                     [ 40%]
-test_PruebaComponentes.py::test_tarea_creacion PASSED                    [ 50%]
-test_PruebaComponentes.py::test_tarea_completar PASSED                   [ 60%]
-test_PruebaComponentes.py::test_gestor_agregar PASSED                    [ 70%]
-test_PruebaDeRendimiento.py::test_rendimiento_agregar_muchas_tareas PASSED [ 80%]
-test_PruebaInterfaz.py::test_interfaz_listado PASSED                     [ 90%]
-test_PruebaInterfaz.py::test_interfaz_error_indice PASSED                [100%]
+test_CajaNegra.py::test_caja_negra_registrar_paciente_valido PASSED      [  5%]
+test_CajaNegra.py::test_caja_negra_registrar_paciente_duplicado PASSED   [ 10%]
+test_CajaNegra.py::test_caja_negra_reservar_turno_valido PASSED          [ 15%]
+test_CajaNegra.py::test_caja_negra_reservar_paciente_inexistente PASSED  [ 21%]
+test_CajaNegra.py::test_caja_negra_reservar_medico_inexistente PASSED    [ 26%]
+test_CajaNegra.py::test_caja_negra_cancelar_turno_existente PASSED       [ 31%]
+test_CajaNegra.py::test_caja_negra_cancelar_turno_inexistente PASSED     [ 36%]
+test_E2E.py::test_e2e_flujo_completo PASSED                              [ 42%]
+test_E2E.py::test_e2e_manejo_errores PASSED                              [ 47%]
+test_IntegracionPrueba.py::test_integracion_flujo_completo PASSED        [ 52%]
+test_PruebaCamino.py::test_camino_reservar_turno_exitoso PASSED          [ 57%]
+test_PruebaCamino.py::test_camino_paciente_no_encontrado PASSED          [ 63%]
+test_PruebaCamino.py::test_camino_medico_no_encontrado PASSED            [ 68%]
+test_PruebaComponentes.py::test_paciente_creacion PASSED                 [ 73%]
+test_PruebaComponentes.py::test_medico_creacion PASSED                   [ 78%]
+test_PruebaComponentes.py::test_clinica_agregar_paciente PASSED          [ 84%]
+test_PruebaDeRendimiento.py::test_rendimiento_registrar_muchos_pacientes PASSED [ 89%]
+test_PruebaInterfaz.py::test_interfaz_mostrar_medicos PASSED             [ 94%]
+test_PruebaInterfaz.py::test_interfaz_sin_turnos PASSED                  [100%]
 
-============================= 10 passed in 0.09s ==============================
+============================= 19 passed in 0.45s ==============================
