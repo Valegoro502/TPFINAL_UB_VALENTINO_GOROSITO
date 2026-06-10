@@ -104,6 +104,20 @@ ejecutar_pruebas.bat
 bash ejecutar_pruebas.sh
 ```
 
+## Resultados de Pruebas (Testing)
+
+El sistema ha sido sometido a un conjunto completo de pruebas automatizadas cubriendo distintos niveles de testing, con una tasa de aprobación del **100% (19/19 tests pasados)**.
+
+- **Pruebas de Componentes (3 tests):** Validaron la creación individual de clases (`Paciente`, `Medico`, `Clinica`).
+- **Prueba de Integración (1 test):** Comprobó el flujo integral uniendo módulos (registrar paciente/médico y reservar turno).
+- **Pruebas de Caja Negra (7 tests):** Evaluaron las entradas y salidas del sistema (DNI duplicados, médicos inexistentes, cancelaciones válidas e inválidas).
+- **Prueba de Rendimiento (1 test):** Verificó la escalabilidad registrando 1000 pacientes en menos de 1 segundo.
+- **Pruebas de Interfaz (2 tests):** Validaron el formato de salida correcto hacia el usuario en la consola.
+- **Pruebas de Camino (3 tests):** Evaluaron todas las bifurcaciones lógicas (`if/else`) del método principal de reserva de turnos.
+- **Pruebas End-to-End (2 tests):** Simularon el uso real del sistema a través del menú de consola interactivo (happy path y manejo de errores).
+
+Para más detalles, consultar el documento `PlanDePruebas.md` y `DocumentacionEjecucion.md`.
+
 # Diagrama UML
 
 ![Diagrama UML y Diagrama de casos de uso](uml_clinica.png)
