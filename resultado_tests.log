@@ -1,4 +1,4 @@
-ï»¿============================= test session starts =============================
+============================= test session starts =============================
 platform win32 -- Python 3.13.2, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\valen\AppData\Local\Programs\Python\Python313\python.exe
 cachedir: .pytest_cache
 rootdir: C:\Users\valen\tpfinal
@@ -9,11 +9,11 @@ test_CajaNegra.py::test_caja_negra_registrar_paciente_duplicado PASSED   [ 10%]
 test_CajaNegra.py::test_caja_negra_reservar_turno_valido PASSED          [ 15%]
 test_CajaNegra.py::test_caja_negra_reservar_paciente_inexistente PASSED  [ 21%]
 test_CajaNegra.py::test_caja_negra_reservar_medico_inexistente PASSED    [ 26%]
-test_CajaNegra.py::test_caja_negra_cancelar_turno_existente PASSED       [ 31%]
+test_CajaNegra.py::test_caja_negra_cancelar_turno_existente FAILED       [ 31%]
 test_CajaNegra.py::test_caja_negra_cancelar_turno_inexistente PASSED     [ 36%]
-test_E2E.py::test_e2e_flujo_completo PASSED                              [ 42%]
+test_E2E.py::test_e2e_flujo_completo FAILED                              [ 42%]
 test_E2E.py::test_e2e_manejo_errores PASSED                              [ 47%]
-test_IntegracionPrueba.py::test_integracion_flujo_completo PASSED        [ 52%]
+test_IntegracionPrueba.py::test_integracion_flujo_completo FAILED        [ 52%]
 test_PruebaCamino.py::test_camino_reservar_turno_exitoso PASSED          [ 57%]
 test_PruebaCamino.py::test_camino_paciente_no_encontrado PASSED          [ 63%]
 test_PruebaCamino.py::test_camino_medico_no_encontrado PASSED            [ 68%]
@@ -24,4 +24,75 @@ test_PruebaDeRendimiento.py::test_rendimiento_registrar_muchos_pacientes PASSED 
 test_PruebaInterfaz.py::test_interfaz_mostrar_medicos PASSED             [ 94%]
 test_PruebaInterfaz.py::test_interfaz_sin_turnos PASSED                  [100%]
 
-============================= 19 passed in 0.45s ==============================
+================================== FAILURES ===================================
+__________________ test_caja_negra_cancelar_turno_existente ___________________
+
+    def test_caja_negra_cancelar_turno_existente():
+        """Cancelar turno existente -> debe retornar True"""
+        c = Clinica()
+        c.agregar_paciente(Paciente("12345678", "Juan"))
+        c.agregar_medico(Medico("M001", "García", "Cardiología"))
+        c.reservar_turno("12345678", "M001", "15/06/2026")
+>       assert c.cancelar_turno("12345678", "M001") is True
+E       AssertionError: assert False is True
+E        +  where False = cancelar_turno('12345678', 'M001')
+E        +    where cancelar_turno = <clinica.Clinica object at 0x000001D0113CC170>.cancelar_turno
+
+test_CajaNegra.py:45: AssertionError
+---------------------------- Captured stdout call -----------------------------
+No existe ese turno
+___________________________ test_e2e_flujo_completo ___________________________
+
+capsys = <_pytest.capture.CaptureFixture object at 0x000001D010AAF230>
+
+    def test_e2e_flujo_completo(capsys):
+        """
+        Test E2E: Simula un usuario que realiza el flujo completo:
+        1. Registra un paciente
+        2. Registra un médico
+        3. Reserva un turno
+        4. Muestra los turnos
+        5. Cancela el turno
+        6. Sale del sistema
+        """
+        inputs = iter([
+            "1", "12345678", "Juan Pérez",
+            "2", "M001", "García", "Cardiología",
+            "3", "12345678", "M001", "15/06/2026",
+            "6",
+            "4", "12345678", "M001",
+            "7",
+        ])
+    
+        with patch("builtins.input", lambda _: next(inputs)):
+            menu()
+    
+        salida = capsys.readouterr().out
+    
+        assert "Paciente registrado correctamente" in salida
+        assert "Médico registrado correctamente" in salida
+        assert "Turno reservado correctamente" in salida
+>       assert "Turno cancelado correctamente" in salida
+E       AssertionError: assert 'Turno cancelado correctamente' in '\n=== SISTEMA DE TURNOS MÉDICOS ===\n1. Registrar paciente\n2. Registrar médico\n3. Reservar turno\n4. Cancelar turno\n5. Mostrar médicos\n6. Mostrar turnos\n7. Salir\nPaciente registrado correctamente\n\n=== SISTEMA DE TURNOS MÉDICOS ===\n1. Registrar paciente\n2. Registrar médico\n3. Reservar turno\n4. Cancelar turno\n5. Mostrar médicos\n6. Mostrar turnos\n7. Salir\nMédico registrado correctamente\n\n=== SISTEMA DE TURNOS MÉDICOS ===\n1. Registrar paciente\n2. Registrar médico\n3. Reservar turno\n4. Cancelar turno\n5. Mostrar médicos\n6. Mostrar turnos\n7. Salir\nTurno reservado correctamente\n\n=== SISTEMA DE TURNOS MÉDICOS ===\n1. Registrar paciente\n2. Registrar médico\n3. Reservar turno\n4. Cancelar turno\n5. Mostrar médicos\n6. Mostrar turnos\n7. Salir\nNo hay turnos registrados\n\n=== SISTEMA DE TURNOS MÉDICOS ===\n1. Registrar paciente\n2. Registrar médico\n3. Reservar turno\n4. Cancelar turno\n5. Mostrar médicos\n6. Mostrar turnos\n7. Salir\nNo existe ese turno\n\n=== SISTEMA DE TURNOS MÉDICOS ===\n1. Registrar paciente\n2. Registrar médico\n3. Reservar turno\n4. Cancelar turno\n5. Mostrar médicos\n6. Mostrar turnos\n7. Salir\nSaliendo del sistema...\n'
+
+test_E2E.py:32: AssertionError
+_______________________ test_integracion_flujo_completo _______________________
+
+    def test_integracion_flujo_completo():
+        c = Clinica()
+    
+        c.agregar_paciente(Paciente("12345678", "Juan Pérez"))
+        c.agregar_medico(Medico("M001", "García", "Cardiología"))
+    
+        c.reservar_turno("12345678", "M001", "15/06/2026")
+>       assert len(c.turnos) == 1
+E       assert 0 == 1
+E        +  where 0 = len([])
+E        +    where [] = <clinica.Clinica object at 0x000001D010B54E50>.turnos
+
+test_IntegracionPrueba.py:11: AssertionError
+=========================== short test summary info ===========================
+FAILED test_CajaNegra.py::test_caja_negra_cancelar_turno_existente - Assertio...
+FAILED test_E2E.py::test_e2e_flujo_completo - AssertionError: assert 'Turno c...
+FAILED test_IntegracionPrueba.py::test_integracion_flujo_completo - assert 0 ...
+======================== 3 failed, 16 passed in 0.35s =========================
