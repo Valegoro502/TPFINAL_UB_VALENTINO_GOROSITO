@@ -71,8 +71,7 @@ class Clinica:
             print("No se encontró el médico")
             return False
         turno = Turno(paciente, medico, fecha)
-        #bug
-        # self.turnos.append(turno)
+        self.turnos.append(turno)
         return True
 
     def cancelar_turno(self, dni, matricula):
